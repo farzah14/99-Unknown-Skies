@@ -1,14 +1,62 @@
-[gd_scene load_steps=3 format=3 uid="uid://bengwfbkoqp7k"]
+[gd_scene load_steps=5 format=3 uid="uid://cp4htk0hkyx4k"]
 
 [ext_resource type="Script" path="res://phase/mainmenu/mainmenu.gd" id="1_3wbwu"]
-[ext_resource type="PackedScene" uid="uid://c7kofhbnuenr8" path="res://phase/splash/splash.tscn" id="2_16xdv"]
+[ext_resource type="Theme" uid="uid://bfqtgvgabvg6x" path="res://theme/buttonS1F.tres" id="2_0q5uc"]
+[ext_resource type="Texture2D" uid="uid://dw74lc7031p32" path="res://images/settings.svg" id="3_rbw7g"]
+[ext_resource type="Texture2D" uid="uid://dttnvrdm0udc8" path="res://images/exit.svg" id="4_pbfve"]
 
-[node name="mainmenu" type="Node2D"]
+[node name="mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3wbwu")
 
-[node name="black" type="ColorRect" parent="."]
-offset_right = 1284.0
-offset_bottom = 724.0
-color = Color(0, 0, 0, 1)
+[node name="background" type="Node2D" parent="."]
 
-[node name="splash" parent="." instance=ExtResource("2_16xdv")]
+[node name="color" type="ColorRect" parent="background"]
+offset_right = 1279.0
+offset_bottom = 719.0
+
+[node name="settings" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -120.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_0q5uc")
+
+[node name="settings" type="Button" parent="settings"]
+layout_mode = 2
+icon = ExtResource("3_rbw7g")
+icon_alignment = 1
+expand_icon = true
+
+[node name="exit" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = -40.0
+grow_vertical = 0
+
+[node name="exit" type="Button" parent="exit"]
+layout_mode = 2
+icon = ExtResource("4_pbfve")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="settings/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="exit/exit" to="." method="_on_exit_pressed"]
