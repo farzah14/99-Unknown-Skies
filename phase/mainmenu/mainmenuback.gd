@@ -1,7 +1,7 @@
 extends Control
 
 func _on_settings_pressed():
-	print("Telah Di Press")
+	print ("Settings Pressed")
 	pass # Replace with function body.
 
 func _on_exit_pressed():
