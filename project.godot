@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="99-Unknown-Skies"
+run/main_scene="res://phase/mainmenu/mainmenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/image="res://images/wiqireative.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://images/icon.svg"
 
 [display]
