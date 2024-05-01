@@ -1,62 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp4htk0hkyx4k"]
+[gd_scene load_steps=7 format=3 uid="uid://cp4htk0hkyx4k"]
 
 [ext_resource type="Script" path="res://phase/mainmenu/mainmenu.gd" id="1_l4y12"]
 [ext_resource type="Theme" uid="uid://bfqtgvgabvg6x" path="res://theme/buttonS1F.tres" id="2_0q5uc"]
-[ext_resource type="Texture2D" uid="uid://dw74lc7031p32" path="res://images/settings.svg" id="3_rbw7g"]
+[ext_resource type="Script" path="res://phase/mainmenu/background.gd" id="2_1pu60"]
+[ext_resource type="Texture2D" uid="uid://bvnmsfe2auqgx" path="res://images/sett.svg" id="4_mqt5k"]
 [ext_resource type="Texture2D" uid="uid://dttnvrdm0udc8" path="res://images/exit.svg" id="4_pbfve"]
+[ext_resource type="PackedScene" uid="uid://cihro5ybiuvu4" path="res://phase/sett/sett.tscn" id="6_n60je"]
 
-[node name="mainmenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="mainmenu" type="Node2D"]
 script = ExtResource("1_l4y12")
 
 [node name="background" type="Node2D" parent="."]
+script = ExtResource("2_1pu60")
 
-[node name="ColorRect" type="ColorRect" parent="background"]
-offset_right = 1280.0
-offset_bottom = 720.0
+[node name="bg" type="ColorRect" parent="background"]
+offset_right = 65.0
+offset_bottom = 65.0
 
-[node name="settings" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -120.0
-offset_right = -40.0
-offset_bottom = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("2_0q5uc")
+[node name="ui" type="CanvasLayer" parent="."]
 
-[node name="settings" type="Button" parent="settings"]
-layout_mode = 2
-icon = ExtResource("3_rbw7g")
-icon_alignment = 1
-expand_icon = true
-
-[node name="exit" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
+[node name="exit" type="Button" parent="ui"]
 offset_left = 40.0
-offset_top = -120.0
+offset_top = 600.0
 offset_right = 120.0
-offset_bottom = -40.0
-grow_vertical = 0
-
-[node name="exit" type="Button" parent="exit"]
-layout_mode = 2
+offset_bottom = 680.0
 icon = ExtResource("4_pbfve")
 flat = true
 expand_icon = true
 
-[connection signal="pressed" from="settings/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="exit/exit" to="." method="_on_exit_pressed"]
+[node name="sett" type="Button" parent="ui"]
+offset_left = 1137.0
+offset_top = 577.0
+offset_right = 1240.0
+offset_bottom = 680.0
+theme = ExtResource("2_0q5uc")
+icon = ExtResource("4_mqt5k")
+icon_alignment = 1
+expand_icon = true
+
+[node name="settings" parent="ui" instance=ExtResource("6_n60je")]
+visible = false
+offset_left = 228.0
+offset_top = 119.0
+offset_right = -221.0
+offset_bottom = -147.0
+
+[node name="ColorRect" type="ColorRect" parent="ui/settings"]
+layout_mode = 0
+offset_right = 831.0
+offset_bottom = 455.0
+color = Color(0.146294, 0.229345, 0.458054, 1)
+
+[connection signal="pressed" from="ui/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ui/sett" to="." method="_on_settings_pressed"]
