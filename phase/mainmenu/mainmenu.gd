@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 func _on_settings_pressed():
 	print("Telah Di Press")
