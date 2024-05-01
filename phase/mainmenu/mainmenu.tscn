@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp4htk0hkyx4k"]
+[gd_scene load_steps=7 format=3 uid="uid://cp4htk0hkyx4k"]
 
 [ext_resource type="Script" path="res://phase/mainmenu/mainmenu.gd" id="1_l4y12"]
 [ext_resource type="Theme" uid="uid://bfqtgvgabvg6x" path="res://theme/buttonS1F.tres" id="2_0q5uc"]
 [ext_resource type="Script" path="res://phase/mainmenu/background.gd" id="2_1pu60"]
 [ext_resource type="Texture2D" uid="uid://bvnmsfe2auqgx" path="res://images/sett.svg" id="4_mqt5k"]
 [ext_resource type="Texture2D" uid="uid://dttnvrdm0udc8" path="res://images/exit.svg" id="4_pbfve"]
+[ext_resource type="PackedScene" uid="uid://cihro5ybiuvu4" path="res://phase/sett/sett.tscn" id="6_n60je"]
 
 [node name="mainmenu" type="Node2D"]
 script = ExtResource("1_l4y12")
@@ -36,6 +37,19 @@ theme = ExtResource("2_0q5uc")
 icon = ExtResource("4_mqt5k")
 icon_alignment = 1
 expand_icon = true
+
+[node name="settings" parent="ui" instance=ExtResource("6_n60je")]
+visible = false
+offset_left = 228.0
+offset_top = 119.0
+offset_right = -221.0
+offset_bottom = -147.0
+
+[node name="ColorRect" type="ColorRect" parent="ui/settings"]
+layout_mode = 0
+offset_right = 831.0
+offset_bottom = 455.0
+color = Color(0.146294, 0.229345, 0.458054, 1)
 
 [connection signal="pressed" from="ui/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ui/sett" to="." method="_on_settings_pressed"]
